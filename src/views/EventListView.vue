@@ -8,6 +8,7 @@
 <script>
 // @ is an alias to /src
 import EventCard from "@/components/EventCard.vue";
+import axios from "axios";
 
 export default {
   name: "EventListView",
@@ -16,30 +17,20 @@ export default {
   },
   data() {
     return {
-      events: [
-        {
-          id: 1,
-          title: "Vue Mastery Live",
-          location: "London, UK",
-          date: "2020-07-19",
-          time: "19:00",
-        },
-        {
-          id: 2,
-          title: "Vue Mastery Live",
-          location: "New York, US",
-          date: "2020-07-21",
-          time: "19:00",
-        },
-        {
-          id: 3,
-          title: "Vue Mastery Live",
-          location: "San Francisco, US",
-          date: "2020-07-23",
-          time: "19:00",
-        },
-      ],
+      events: null,
     };
+  },
+  created() {
+    axios
+      .get(
+        "https://my-json-server.typicode.com/Code-Pop/Real-World_Vue-3/events"
+      )
+      .then((response) => {
+        this.events = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>
