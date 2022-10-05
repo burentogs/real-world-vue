@@ -1,17 +1,15 @@
 <template>
+  <h1>Events for Good</h1>
   <div class="events">
-    <h4>Events For Good</h4>
     <EventCard v-for="event in events" :key="event.id" :event="event" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import EventCard from "@/components/EventCard.vue";
 import EventService from "@/services/EventService.js";
-
 export default {
-  name: "EventListView",
+  name: "EventList",
   components: {
     EventCard,
   },
@@ -31,6 +29,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .events {
   display: flex;
